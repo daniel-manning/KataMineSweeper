@@ -12,5 +12,15 @@ class ReaderSpec extends FlatSpec with Matchers {
     mineField.mines(0) shouldBe Array(Mine(),Safe(0),Safe(0),Safe(0))
   }
 
+  "Neighbours of a position" should "have 8 members" in {
+    MineUtils.neighbours.length shouldBe 8
+  }
+
+
+  "A test minefield file" should "count the number of mines correctly" in {
+    val mineField: MineField = new MineReader("MineTest").parseMineFile
+    MineUtils.countNeighbours((1,1),mineField) shouldBe 2
+  }
+
 
 }

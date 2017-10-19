@@ -20,13 +20,13 @@ object MineUtils {
   }
 
   def print(board:Seq[(Square, (Int, Int))]):Unit = {
-    board.foreach(n => print(n._1))
+    board.foreach(n => {if(n._2._2 == 0){Console.print('\n')};print(n._1)})
   }
 
   val neighbours: List[(Int, Int)] = for{
     i <- List(-1,0,1)
     j <- List(-1,0,1)
-    if( i != 0 && j != 0)
+    if( !(i == 0 && j == 0))
   } yield (i,j)
 
   def countNeighbours(position:(Int,Int), board:MineField):Int = {
